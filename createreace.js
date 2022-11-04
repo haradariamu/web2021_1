@@ -3,9 +3,12 @@ const db = new sqlite3.Database('test2.db');
 
 let schema = `
 create table reace(
-  reaceid integer primary key,
+  id integer primary key,
   name text not null,
-  kyori integer not null
+  kyori integer not null,
+  kaisaiti text not null,
+  seibetu text not null,
+  nennrei integer not null
 );
 `
 
