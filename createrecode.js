@@ -4,11 +4,12 @@ const db = new sqlite3.Database('test3.db');
 let schema = `
 create table recode(
   id integer primary key,
-  recename text not null,
-  umaname text not null,
-  time text not null,
-  nenndo integer not null,
-  kisyu text not null
+  レースid integer not null,
+  レース名 text not null,
+  馬名 text not null,
+  時間 text not null,
+  年 data not null,
+  騎手 text not null
 );
 `
 
