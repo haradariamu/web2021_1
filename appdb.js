@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.get("/recode", (req, res) => {
     db.serialize( () => {
-        db.all("recode id,レースid,レース名, 馬名, タイム, 年, 騎手　from example;", (error, row) => {
+        db.all("select id,レースid,レース名, 馬名, タイム, 年, 騎手　from example;", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
