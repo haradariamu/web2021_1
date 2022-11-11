@@ -7,7 +7,7 @@ create table recode(
   レースid integer not null,
   レース名 text not null,
   馬名 text not null,
-  時間 text not null,
+  タイム text not null,
   年 data not null,
   騎手 text not null
 );
