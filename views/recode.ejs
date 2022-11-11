@@ -1,0 +1,24 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>歴代G1レコードタイム</h2>
+  <table>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.id %></td>
+            <td><%= row.レースid %></a></td>
+            <td><a href="/rece/:syousai/<%= row.レースid %>"><%= row.レース名 %</a></td>
+          　<td><a href="/kyousouba/:syousai/<%= row.馬名 %>"><%= row.レース名 %</a></td>
+          　<td><%= ro
+          　<td><%= row.タイム %></td>
+          　<td><%= row.年 %></td>
+          　<td><%= row.騎手 %></td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>
