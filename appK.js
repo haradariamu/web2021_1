@@ -12,13 +12,23 @@ app.get("/", (req, res) => {
   res.render('toppage', {mes:message});
 });
 
-app.get("/race", (req, res) => {
+app.get("/race/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 名前, コース,距離 from example;", (error, row) => {
+        db.all("select id, 名前, コース,距離 from rece where maker_id="+req.params.id+";", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
-            res.render('toppage', {data:row});
+            res.render('race', {data:row});
+        })
+    })
+})
+app.get("/uma/:id", (req, res) => {
+    db.serialize( () => {
+        db.all("select id, 名前 from rece where maker_id="+req.params.id+";", (error, row) => {
+            if( error ) {
+                res.render('toppage', {mes:"エラーです"});
+            }
+            res.render('race', {data:row});
         })
     })
 })
