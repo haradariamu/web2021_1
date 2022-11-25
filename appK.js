@@ -18,7 +18,7 @@ app.get("/race", (req, res) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
-            res.render('select', {data:row});
+            res.render('toppage', {data:row});
         })
     })
 })

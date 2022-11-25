@@ -5,8 +5,10 @@ let schema = `
 create table reace(
   id integer primary key,
   name text not null,
+  keibajyou text not null,
+  course text not null,
   kyori integer not null,
-  kaisaiti text not null,
+  tekisei text not null,
   seibetu text not null,
   nennrei integer not null
 );

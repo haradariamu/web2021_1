@@ -4,11 +4,12 @@ const db = new sqlite3.Database('test3.db');
 let schema = `
 create table yuusyouba(
   id integer primary key,
-  umaname text not null,
-  tekiseikosu text not null,
+  name text not null,
   tekiseikyori text not null,
-  seibetu text not null,
-  kakutokusyoukinn iteger not null
+  course text not null,
+  kyakusitu text not null,
+  seiseki text not null,
+  seibetu text not null
 );
 `
 
