@@ -12,9 +12,9 @@ app.get("/", (req, res) => {
   res.render('toppage', {mes:message});
 });
 
-app.get("/db", (req, res) => {
+app.get("/race", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 都道府県, 人口 from example;", (error, row) => {
+        db.all("select id, 名前, コース,距離 from example;", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }

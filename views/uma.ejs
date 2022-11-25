@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>レース一覧</h2>
+  <from>
+    <a herf="/public/search.html">検索</a>&nbsp
+    <a herf="/public/add.html">追加</a>
+  </from>
+  <table>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.id %></td>
+            <td><a herf="/public/<%= row.id %>"><%= row.name %></td>
+            
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>
