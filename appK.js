@@ -12,6 +12,28 @@ app.get("/", (req, res) => {
   res.render('toppage', {mes:message});
 });
 
+app.get("/keibajyou", (req, res) => {
+    db.serialize( () => {
+        db.all("select id, name from maker ;", (error, row) => {
+            if( error ) {
+                res.render('toppage', {mes:"エラーです"});
+            }
+            res.render('keibajyou', {data:row});
+        })
+    })
+})
+
+app.get("/kyousouba", (req, res) => {
+    db.serialize( () => {
+        db.all("select id, inntai from maker ;", (error, row) => {
+            if( error ) {
+                res.render('toppage', {mes:"エラーです"});
+            }
+            res.render('kyousouba', {data:row});
+        })
+    })
+})
+
 app.get("/race/:id", (req, res) => {
     db.serialize( () => {
         db.all("select id, 名前, コース,距離 from rece where maker_id="+req.params.id+";", (error, row) => {
