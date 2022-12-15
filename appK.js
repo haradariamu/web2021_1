@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
-  const message = "このページの説明";
+  const message = "このページは競馬に関するサイトです。";
   res.render('toppage', {mes:message});
 });
 
@@ -36,7 +36,7 @@ app.get("/kyousouba", (req, res) => {
 
 app.get("/race/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 名前, コース,距離 from rece where maker_id="+req.params.id+";", (error, row) => {
+        db.all("select id, 名前, コース,距離 from rece where keibajyou_id="+req.params.id+";", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
