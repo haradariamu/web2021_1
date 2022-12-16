@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test3.db');
 
 let sql = `
-insert into genneki ("genneki") values ("suda");
+insert into genneki ("genneki") values ("引退");
 `
 
 db.serialize( () => {

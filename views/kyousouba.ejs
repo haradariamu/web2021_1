@@ -6,11 +6,11 @@
 </head>
 <body>
   <h2>競走馬トップページ</h2>
-  <table kyousouba="1">
+  <table genneki="1">
     <% for (let row of data) {%>
       <tr>
         <tb><%= row.id %></tb>
-        <td><a herf="/uma/<%= row.id %>"><%= row.inntai %></a></td>
+        <td><a herf="/uma/<%= row.id %>"><%= row.genneki %></a></td>
       </tr>
     <% } %>
   </table><br>

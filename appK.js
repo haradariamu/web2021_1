@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.get("/keibajyou", (req, res) => {
     db.serialize( () => {
-        db.all("select * from　keibajyou ;", (error, row) => {
+        db.all("select * from　keibajyou　;", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
