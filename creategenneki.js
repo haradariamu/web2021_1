@@ -2,15 +2,9 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test3.db');
 
 let schema = `
-create table reace(
+create table genneki(
   id integer primary key,
-  name text not null,
-  course text not null,
-  kyori integer not null,
-  tekisei text not null,
-  seibetu text not null,
-  nennrei integer not null,
-  keibajyou.id intrger not null,
+  genneki text not null
 );
 `
 

@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.get("/keibajyou", (req, res) => {
     db.serialize( () => {
-        db.all("select id, name from maker ;", (error, row) => {
+        db.all("select * from　keibajyou ;", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
@@ -25,7 +25,7 @@ app.get("/keibajyou", (req, res) => {
 
 app.get("/kyousouba", (req, res) => {
     db.serialize( () => {
-        db.all("select id, inntai from maker ;", (error, row) => {
+        db.all("select * from genneki ;", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
@@ -36,7 +36,7 @@ app.get("/kyousouba", (req, res) => {
 
 app.get("/race/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 名前, コース,距離 from rece where keibajyou_id="+req.params.id+";", (error, row) => {
+        db.all("select id, name, course,kyori from rece where keibajyou.id="+req.params.id+";", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
@@ -46,7 +46,7 @@ app.get("/race/:id", (req, res) => {
 })
 app.get("/uma/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 名前 from rece where maker_id="+req.params.id+";", (error, row) => {
+        db.all("select id, name from rece where genneki.id="+req.params.id+";", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }

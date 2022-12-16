@@ -1,7 +1,4 @@
-<!Doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <title>Show message</title>
 </head>
 <body>
@@ -12,12 +9,12 @@
             <td><%= row.id %></td>
             <td><%= row.name %></td>
             <td><%= row.course %></td>
-            <td><%= row.kyori %></td>
-            <td><%= row.tekisei %></td>
+            <td><%= row.tekiseikyori %></td>
+            <td><%= row.kyakusitu %></td>
             <td><%= row.seibetu %></td>
-            <td><%= row.nennrei %></td>
+            <td><%= row.tuusann %></td>
         </tr>
-        <img src="keiba.<%= row.name %>">
+        <a herf="/public/add.html">追加</a>
       <% } %>
   </table>
 </body>

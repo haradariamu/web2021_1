@@ -5,11 +5,12 @@ let schema = `
 create table yuusyouba(
   id integer primary key,
   name text not null,
-  tekiseikyori text not null,
   course text not null,
+  tekiseikyori integer not null,
   kyakusitu text not null,
-  seiseki text not null,
-  seibetu text not null
+  seibetu text not null,
+  tuusann text not null,
+  genneki.id integer not null
 );
 `
 
