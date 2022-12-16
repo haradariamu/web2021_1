@@ -36,7 +36,7 @@ app.get("/kyousouba", (req, res) => {
 
 app.get("/race/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select id, name, course,kyori from rece where keibajyou.id="+req.params.id+";", (error, row) => {
+        db.all("select race.id, race.name, race.course,race.kyori from rece where keibajyou.id="+req.params.id+";", (error, row) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
