@@ -50,7 +50,7 @@ app.get("/uma/:id", (req, res) => {
             if( error ) {
                 res.render('toppage', {mes:"エラーです"});
             }
-            res.render('race', {data:row});
+            res.render('uma', {data:row});
         })
     })
 })
