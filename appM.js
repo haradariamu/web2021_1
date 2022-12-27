@@ -24,7 +24,7 @@ app.get("/boss", (req, res) => {
 })
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select megido.id,magido.名前, magido.HP,magido.攻撃力,magido.防御力,magido.素早さ,sutairu.名前,kurasu.名前 from megido INNER JOIN sutairu,kurasu ON megido.スタイル = sutairu.id,megido.クラス = kurasu.id;", (error, row) => {
+        db.all("select megido.id, megido.name,type.name as type from pokemon,pt inner join type on ( (pokemon.id=pt.pokemon_id) and (type.id=pt.type_id) );", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
