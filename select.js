@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
 let sql = `
-select id, 名前 from sutairu;
+select id, 名前 from KS;
 `
 
 db.serialize( () => {

@@ -1,19 +1,16 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
-let schema = `
-create table kurasu(
-  id integer primary key,
-  名前 text not null
-);
+let sql = `
+insert into KS ("名前") values ("スナイパー");
 `
 
 db.serialize( () => {
-	db.run( schema, (error, row) => {
+	db.run( sql, (error, row) => {
 		if(error) {
 			console.log('Error: ', error );
 			return;
 		}
-		console.log( "テーブルを作成しました" );
+		console.log( "データを追加しました" );
 	});
 });
