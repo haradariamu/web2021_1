@@ -2,15 +2,15 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test3.db');
 
 let schema = `
-create table uma(
+create table megido(
   id integer primary key,
-  name text not null,
-  course text not null,
-  tekiseikyori integer not null,
-  kyakusitu text not null,
-  seibetu text not null,
-  tuusann text not null,
-  genneki.id integer not null
+  名前 text not null,
+  HP integer not null,
+  攻撃力 integer not null,
+  防御力 integer not null,
+  素早さ integer not null,
+  スタイル integer not null,
+  クラス integer not null,
 );
 `
 
