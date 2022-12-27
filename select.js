@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test2.db');
+const db = new sqlite3.Database('test4.db');
 
 let sql = `
-select id, name from keibajyou;
+select id, 名前 from sutairu;
 `
 
 db.serialize( () => {
@@ -12,7 +12,7 @@ db.serialize( () => {
 			return;
 		}
 		for( let data of row ) {
-			console.log( data.id + ' : ' + data.name );
+			console.log( data.id + ' : ' + data.名前 );
 		}
 	});
 });

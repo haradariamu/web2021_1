@@ -1,12 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test3.db');
+const db = new sqlite3.Database('test4.db');
 
 let schema = `
 create table waza(
   id integer primary key,
   megidoID integer not null,
-  name text not null,
-  倍率　real not null,
+  種類 text not null,
+  倍率 text not null,
   回数 integer not null,
   効果 text not null
 );

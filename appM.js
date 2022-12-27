@@ -22,11 +22,21 @@ app.get("/boss", (req, res) => {
         })
     })
 })
-app.get("/top", (req, res) => {
+app.get("/megido", (req, res) => {
+    db.serialize( () => {
+        db.all("select megido.id,magido.名前, magido.HP,magido.攻撃力,magido.防御力,magido.素早さ,sutairu.名前,kurasu.名前 from megido INNER JOIN sutairu,kurasu ON megido.スタイル = sutairu.id,megido.クラス = kurasu.id;", (error, row) => {
+            if( error ) {
+                res.render('toppageM', {mes:"エラーです"});
+            }
+            res.render('megido', {data:row});
+        })
+    })
+})
+app.get("/megido1", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, 都道府県, 人口 from example order by 人口" + desc + " limit " + req.query.pop + ";";
+    let sql = "select megido.名前, megido.HP, 人口 from example order by 人口" + desc + " limit " + req.query.pop + ";";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {

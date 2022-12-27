@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test3.db');
+const db = new sqlite3.Database('test4.db');
 
 let sql = `
-insert into  uma("umaname","kyakusitu","katireaceid") values ("アスクビクターモア","逃げ",3);
+insert into megido ("名前","HP","攻撃力","防御力","素早さ","スタイル","クラス") values ("ウェパル",5646,1188,287,699,2,1);
 `
 
 db.serialize( () => {

@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test3.db');
+const db = new sqlite3.Database('test4.db');
 
 let schema = `
 create table megido(
@@ -10,7 +10,7 @@ create table megido(
   防御力 integer not null,
   素早さ integer not null,
   スタイル integer not null,
-  クラス integer not null,
+  クラス integer not null
 );
 `
 
