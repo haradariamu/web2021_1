@@ -22,9 +22,21 @@ app.get("/boss", (req, res) => {
         })
     })
 })
+
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select megido.id, megido.name,type.name as type from pokemon,pt inner join type on ( (pokemon.id=pt.pokemon_id) and (type.id=pt.type_id) );", (error, row) => {
+        db.all("select id, 名前 from megido;", (error, row) => {
+            if( error ) {
+                res.render('toppageM', {mes:"エラーです"});
+            }
+            res.render('itirann', {data:row});
+        })
+    })
+})
+
+app.get("/s-megido", (req, res) => {
+    db.serialize( () => {
+        db.all("CREATE VIEW MKS AS select megido.名前, megido.HP, megido.攻撃力, megido.防御力, megido.素早さ,KS.名前 as KS from megido,MKS inner join KS on ( (megido.id=MKS.megido_id) and (KS.id=MKS.KS_id) );", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
