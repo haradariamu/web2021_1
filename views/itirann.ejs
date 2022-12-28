@@ -9,14 +9,6 @@
   <table border="1">
       <% for( let row of data ) { %>
         <tr>
-             <td>スタイル</td>
-             <td>クラス</td>
-        </tr>
-        <tr>
-            <td><%= row.スタイル %></td>
-            <td><%= row.クラス %></td>
-        </tr>
-        <tr>
              <td>名前</td>
              <td>HP</td>
             <td>攻撃力</td>
@@ -24,7 +16,7 @@
             <td>素早さ</td>
         </tr>
         <tr>
-            <td><a href="/m-syousai"><%= row.名前 %></a></td>
+            <td><a href="/M-syousai"><%= row.名前 %></a></td>
             <td><%= row.HP %></td>
             <td><%= row.攻撃力 %></td>
             <td><%= row.防御力 %></td>

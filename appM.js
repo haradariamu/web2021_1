@@ -34,9 +34,9 @@ app.get("/megido", (req, res) => {
     })
 })
 
-app.get("/m-syousai", (req, res) => {
+app.get("/M-syousai", (req, res) => {
     db.serialize( () => {
-        db.all("CREATE VIEW MSK AS select * from megido,KS WHERE megido.スタイル = KS.id ,megido.クラス = KS.id ;", (error, row) => {
+        db.all("select 名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス from megido;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -46,7 +46,7 @@ app.get("/m-syousai", (req, res) => {
 })
 
 app.get("/public/megido.html", (req, res) => {
-    db.serialize( () => {
+    db.serialize( () => {"CREATE VIEW MSK AS select * from megido,KS WHERE megido.スタイル = KS.id ,megido.クラス = KS.id ;"
         db.all("CREATE VIEW MKS AS select megido.名前, megido.HP, megido.攻撃力, megido.防御力, megido.素早さ,KS.名前 as KS from megido,MKS inner join KS on ( (megido.id=MKS.megido_id) and (KS.id=MKS.KS_id) );", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
