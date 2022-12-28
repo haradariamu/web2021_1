@@ -6,8 +6,6 @@ create table waza(
   id integer primary key,
   megidoID integer not null,
   種類 text not null,
-  倍率 text ,
-  回数 integer ,
   効果 text not null
 );
 `

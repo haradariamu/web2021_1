@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
 let sql = `
-insert into waza("megidoID","種類","倍率","回数","効果") values (1,"スキル","１２５％",1,"５０％の確率で自身にアタックフォトンを１つ追加する");
+insert into waza("megidoID","種類","効果") values (1,"特性","最初のターン、攻撃力が25%上昇する");
 `
 
 db.serialize( () => {
