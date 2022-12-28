@@ -6,12 +6,23 @@
 </head>
 <body>
   <h2>一覧</h2>
-  <table>
+  <table border="1">
       <% for( let row of data ) { %>
         <tr>
-            <td><%= row.id %></td>
-            <td><%= row.名前 %></td>
+             <td>名前</td>
+             <td>HP</td>
+            <td>攻撃力</td>
+            <td>防御力</td>
+            <td>素早さ</td>
         </tr>
+        <tr>
+            <td><%= row.名前 %></td>
+            <td><%= row.HP %></td>
+            <td><%= row.攻撃力 %></td>
+            <td><%= row.防御力 %></td>
+            <td><%= row.素早さ %></td>
+        </tr>
+        <td><a href="/public/megido.html">並べ替え</a><br></td>
       <% } %>
   </table>
 </body>

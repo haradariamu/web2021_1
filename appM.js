@@ -25,7 +25,7 @@ app.get("/boss", (req, res) => {
 
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select id, 名前 from megido;", (error, row) => {
+        db.all("select 名前, HP, 攻撃力, 防御力, 素早さ from megido;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -34,13 +34,13 @@ app.get("/megido", (req, res) => {
     })
 })
 
-app.get("/s-megido", (req, res) => {
+app.get("/public/megido.html", (req, res) => {
     db.serialize( () => {
         db.all("CREATE VIEW MKS AS select megido.名前, megido.HP, megido.攻撃力, megido.防御力, megido.素早さ,KS.名前 as KS from megido,MKS inner join KS on ( (megido.id=MKS.megido_id) and (KS.id=MKS.KS_id) );", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
-            res.render('megido', {data:row});
+            res.render('itirann', {data:row});
         })
     })
 })
