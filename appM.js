@@ -25,7 +25,7 @@ app.get("/boss", (req, res) => {
 
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select 名前, HP, 攻撃力, 防御力, 素早さ from megido;", (error, row) => {
+        db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ from megido;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -36,7 +36,18 @@ app.get("/megido", (req, res) => {
 
 app.get("/M-syousai", (req, res) => {
     db.serialize( () => {
-        db.all("select 名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス from megido;", (error, row) => {
+        db.all("select megidoID,種類, 効果 from waza;", (error, row) => {
+            if( error ) {
+                res.render('toppageM', {mes:"エラーです"});
+            }
+            res.render('M-syousai', {data:row});
+        })
+    })
+})
+
+app.get("/-syousai", (req, res) => {
+    db.serialize( () => {
+        db.all("CREATE TABLE IF NOT EXISTS MW AS select megido.id, megido.名前,megido.HP,megido.攻撃力,megido.防御力,megido.素早さ,megido.スタイル,megido.クラス,waza.megidoID ,waza.種類,waza.効果 as waza from megido,MW inner join waza on ( (megido.id=MW.megido_id) and (waza.id=MW.waza_id) );", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
