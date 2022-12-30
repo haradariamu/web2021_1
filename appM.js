@@ -27,7 +27,7 @@ app.get("/boss", (req, res) => {
 
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ from megido;", (error, row) => {
+        db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス from megido;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -58,18 +58,35 @@ app.get("/M-syousai/:id", (req, res) => {
 })
 
 
-app.post("/insert", (req, res) => {
+app.post("/insertmegido", (req, res) => {
 let sql = `
-insert into example (都道府県,人口,大学) values ("` + req.body.name + `",` + req.body.jinko + `,` + req.body.daigaku + `);
+insert into megido (名前,HP,攻撃力,防御力,素早さ,クラス,スタイル) values ("` + req.body.名前 + `",` + req.body.HP + `,` + req.body.攻撃力 + `,` + req.body.防御力 + `,` + req.body.素早さ + `,"` + req.body.クラス + `","` + req.body.スタイル + `");
 `
 console.log(sql);
 db.serialize( () => {
 db.run( sql, (error, row) => {
 console.log(error);
 if(error) {
-res.render('show', {mes:"エラーです"});
+res.render('toppageM', {mes:"エラーです"});
 }
-res.redirect('/db');
+res.redirect('/itirann');
+});
+});
+console.log(req.body);
+});
+
+app.post("/insertwaza", (req, res) => {
+let sql = `
+insert into waza (megidoID,種類,効果) values (` + req.body.megidoID + `,"` + req.body.種類 + `","` + req.body.効果 + `");
+`
+console.log(sql);
+db.serialize( () => {
+db.run( sql, (error, row) => {
+console.log(error);
+if(error) {
+res.render('toppageM', {mes:"エラーです"});
+}
+res.redirect('/itirann');
 });
 });
 console.log(req.body);
