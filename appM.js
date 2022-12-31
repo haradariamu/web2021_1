@@ -69,7 +69,7 @@ console.log(error);
 if(error) {
 res.render('toppageM', {mes:"エラーです"});
 }
-res.redirect('/itirann');
+res.redirect('/megido');
 });
 });
 console.log(req.body);
@@ -86,35 +86,22 @@ console.log(error);
 if(error) {
 res.render('toppageM', {mes:"エラーです"});
 }
-res.redirect('/itirann');
+res.redirect('/megido');
 });
 });
 console.log(req.body);
 });
 
-app.get("/public1/megido.html", (req, res) => {
-    db.serialize( () => {"CREATE VIEW MSK AS select * from megido,KS WHERE megido.スタイル = KS.id ,megido.クラス = KS.id ;"
-        db.all("CREATE VIEW MKS AS select megido.名前, megido.HP, megido.攻撃力, megido.防御力, megido.素早さ,KS.名前 as KS from megido,MKS inner join KS on ( (megido.id=MKS.megido_id) and (KS.id=MKS.KS_id) );", (error, row) => {
-            if( error ) {
-                res.render('toppageM', {mes:"エラーです"});
-            }
-            res.render('itirann', {data:row});
-        })
-    })
-})
-app.get("/megido1", (req, res) => {
-    //console.log(req.query.pop);    // ①
+app.get("/topM", (req, res) => {
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select megido.名前, megido.HP, 人口 from example order by 人口" + desc + " limit " + req.query.pop + ";";
-    //console.log(sql);    // ②
+    let sql = "select id,名前, HP, 攻撃力, 防御力, 素早さ, クラス, スタイル from megido order by 素早さ" + desc + " limit " + req.query.pop + ";";
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
-            //console.log(data);    // ③
-            res.render('select', {data:data});
+            res.render('itirann', {data:data});
         })
     })
 })
