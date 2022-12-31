@@ -36,6 +36,17 @@ app.get("/megido", (req, res) => {
     })
 })
 
+app.get("/yougo", (req, res) => {
+    db.serialize( () => {
+        db.all("select id,Q, A from QA;", (error, row) => {
+            if( error ) {
+                res.render('toppageM', {mes:"エラーです"});
+            }
+            res.render('yougo', {data:row});
+        })
+    })
+})
+
 app.get("/M-syousai", (req, res) => {
     db.serialize( () => {
         db.all("select megidoID,種類, 効果 from waza;", (error, row) => {
@@ -102,6 +113,20 @@ app.get("/topM", (req, res) => {
                 res.render('toppageM', {mes:"エラーです"});
             }
             res.render('itirann', {data:data});
+        })
+    })
+})
+
+app.get("/topQ", (req, res) => {
+    let sql = `
+search into QA (Q,A) values Q = ("` + req.body.Q + `");
+`
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('toppageM', {mes:"エラーです"});
+            }
+            res.render('yougo', {data:data});
         })
     })
 })
