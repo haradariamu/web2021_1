@@ -5,19 +5,18 @@
   <title>Show message</title>
 </head>
 <body>
-  <h2>Q&A</h2>
-  <p>Q&A簡易回答</p>
+  <h2>Q&A詳細</h2>
   <table border="1">
       <% for( let row of data ) { %>
         <tr>
-             <td>id</td>
-             <td>Q</td>
-             <td>A</td>
+            <td>QID</td>
+            <td>Q</td>
+            <td>詳細</td>
         </tr>
         <tr>
-            <td><%= row.id %></td>
-            <td><a href="/Q-syousai/<%= row.id %>"><%= row.Q %></a></td>
-            <td><%= row.A %></td>
+            <td><%= row.QID %></td>
+            <td><%= row.Q %></td>
+            <td><%= row.詳細 %></td>
         </tr>
       <% } %>
   </table>

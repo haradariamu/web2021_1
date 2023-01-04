@@ -36,6 +36,18 @@ app.get("/B-syousai/:id", (req, res) => {
     })
 })
 
+app.get("/Q-syousai/:id", (req, res) => {
+    db.serialize( () => {
+        db.all("select id,QID,Q, 詳細 from Qsyousai where QID=" + req.params.id + ";", (error, row) => {
+          if( error ) {
+              res.render('toppageM', {mes:"エラーです"});
+          }
+          res.render('Q-syousai', {data:row});
+        } )
+    })
+})
+
+
 app.get("/megido", (req, res) => {
     db.serialize( () => {
         db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス, 覚醒ゲージ from megido;", (error, row) => {
