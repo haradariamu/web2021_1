@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.get("/boss", (req, res) => {
     db.serialize( () => {
-        db.all("select 名前, ステージ,　覚醒ゲージ,ステージ,HP,攻撃力,防御力,素早さ,攻略の基本 from boss;", (error, row) => {
+        db.all("select id,名前,ステージ, 覚醒ゲージ,HP,攻撃力,防御力,素早さ,スタイル,クラス from boss;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -27,7 +27,7 @@ app.get("/boss", (req, res) => {
 
 app.get("/B-syousai/:id", (req, res) => {
     db.serialize( () => {
-        db.all("select bossID, , 効果,ステージ,覚醒ゲージ,HP,攻撃力,防御力,素早さ from B-syousai where bossID=" + req.params.id + ";", (error, row) => {
+        db.all("select id,名前,ステージ, 覚醒ゲージ,HP,攻撃力,防御力,素早さ,スタイル,クラス from boss where id=" + req.params.id + ";", (error, row) => {
           if( error ) {
               res.render('toppageM', {mes:"エラーです"});
           }

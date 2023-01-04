@@ -12,8 +12,7 @@ create table boss(
   防御力 integer not null,
   素早さ integer not null,
   スタイル text not null,
-  クラス text not null,
-  攻略の基本 text not null
+  クラス text not null
 );
 `
 

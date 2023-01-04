@@ -5,7 +5,8 @@ let schema = `
 create table Q-syousai(
   id integer primary key,
   QID integer not null,
-  詳細 text not null,
+  Q text not null,
+  詳細 text not null
 );
 `
 
