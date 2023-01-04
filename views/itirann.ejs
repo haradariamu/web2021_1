@@ -7,14 +7,16 @@
 <body>
   <h2>一覧</h2>
   <table border="1">
-      <% for( let row of data ) { %>
+    <% for( let row of data ) { %>
         <tr>
              <td>スタイル</td>
              <td>クラス</td>
+            <td>覚醒ゲージ</td>
         </tr>
         <tr>
             <td><%= row.スタイル %></td>
             <td><%= row.クラス %></td>
+            <td><%= row.覚醒ゲージ %></td>
         </tr>
         <tr>
              <td>id</td>
@@ -34,7 +36,8 @@
         </tr>
       <% } %>
   </table>
-        <td><a href="/public/megido.html">並べ替え</a><br></td>
+        <a href="/M-syousai/1">メギド一覧</a><br>
+        <td><a href="/public/megido.html">素早さ昇順</a><br></td>
         <input type="button" onclick="history.back()" value= "戻る">&nbsp<input type="button" onclick="location.href='/public/add.html'"value="追加">
 </body>
 </html>

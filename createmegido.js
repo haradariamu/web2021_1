@@ -10,7 +10,8 @@ create table megido(
   防御力 integer not null,
   素早さ integer not null,
   スタイル text not null,
-  クラス text not null
+  クラス text not null,
+  覚醒ゲージ integer not null
 );
 `
 

@@ -4,15 +4,40 @@
   <meta charset="utf-8">
   <title>Show message</title>
 </head>
-<body>
-  <h2>ボス一覧</h2>
-  <table>
-      <% for( let row of data ) { %>
+<h2>一覧</h2>
+  <p>難易度VH想定</p>
+  <table border="1">
+    <% for( let row of data ) { %>
         <tr>
-            <td><%= row.ステージ %></td>
-            <td><%= row.名前 %></td>
+             <td>スタイル</td>
+             <td>クラス</td>
+            <td>覚醒ゲージ</td>
+        </tr>
+        <tr>
+            <td><%= row.スタイル %></td>
+            <td><%= row.クラス %></td>
+            <td><%= row.覚醒ゲージ %></td>
+        </tr>
+        <tr>
+             <td>id</td>
+             <td>名前</td>
+             <td>HP</td>
+            <td>攻撃力</td>
+            <td>防御力</td>
+            <td>素早さ</td>
+        </tr>
+        <tr>
+            <td><%= row.id %></td>
+            <td><a href="/M-syousai/<%= row.id %>"><%= row.名前 %></a></td>
+            <td><%= row.HP %></td>
+            <td><%= row.攻撃力 %></td>
+            <td><%= row.防御力 %></td>
+            <td><%= row.素早さ %></td>
         </tr>
       <% } %>
   </table>
+        <a href="/M-syousai/1">メギド一覧</a><br>
+        <td><a href="/public/megido.html">素早さ昇順</a><br></td>
+        <input type="button" onclick="history.back()" value= "戻る">&nbsp<input type="button" onclick="location.href='/public/add.html'"value="追加">
 </body>
 </html>

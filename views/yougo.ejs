@@ -6,13 +6,16 @@
 </head>
 <body>
   <h2>Q&A</h2>
+  <p>Q&A簡易回答</p>
   <table border="1">
       <% for( let row of data ) { %>
         <tr>
+             <td>id</td>
              <td>Q</td>
              <td>A</td>
         </tr>
         <tr>
+            <td><%= row.id %></td>
             <td><%= row.Q %></td>
             <td><%= row.A %></td>
         </tr>

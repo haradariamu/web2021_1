@@ -2,11 +2,18 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
 let schema = `
-create table tokusei(
+create table B-syousai(
   id integer primary key,
-  megidoID integer not null,
+  bossID integer not null,
   名前 text not null,
-  効果 text not null
+  ステージ text not null,
+  覚醒ゲージ integer not null,
+  HP integer not null,
+  攻撃力 integer not null,
+  防御力 integer not null,
+  素早さ integer not null,
+  スタイル text not null,
+  クラス text not null
 );
 `
 

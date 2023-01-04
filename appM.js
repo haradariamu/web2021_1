@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.get("/boss", (req, res) => {
     db.serialize( () => {
-        db.all("select ステージ, 名前 from example;", (error, row) => {
+        db.all("select 名前, ステージ,　覚醒ゲージ,ステージ,HP,攻撃力,防御力,素早さ,攻略の基本 from boss;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -25,9 +25,20 @@ app.get("/boss", (req, res) => {
     })
 })
 
+app.get("/B-syousai/:id", (req, res) => {
+    db.serialize( () => {
+        db.all("select bossID, , 効果,ステージ,覚醒ゲージ,HP,攻撃力,防御力,素早さ from B-syousai where bossID=" + req.params.id + ";", (error, row) => {
+          if( error ) {
+              res.render('toppageM', {mes:"エラーです"});
+          }
+          res.render('akamaru', {data:row});
+        } )
+    })
+})
+
 app.get("/megido", (req, res) => {
     db.serialize( () => {
-        db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス from megido;", (error, row) => {
+        db.all("select id,名前, HP, 攻撃力, 防御力, 素早さ,スタイル,クラス, 覚醒ゲージ from megido;", (error, row) => {
             if( error ) {
                 res.render('toppageM', {mes:"エラーです"});
             }
@@ -71,7 +82,7 @@ app.get("/M-syousai/:id", (req, res) => {
 
 app.post("/insertmegido", (req, res) => {
 let sql = `
-insert into megido (名前,HP,攻撃力,防御力,素早さ,クラス,スタイル) values ("` + req.body.名前 + `",` + req.body.HP + `,` + req.body.攻撃力 + `,` + req.body.防御力 + `,` + req.body.素早さ + `,"` + req.body.クラス + `","` + req.body.スタイル + `");
+insert into megido (名前,HP,攻撃力,防御力,素早さ,クラス,スタイル,覚醒ゲージ) values ("` + req.body.名前 + `",` + req.body.HP + `,` + req.body.攻撃力 + `,` + req.body.防御力 + `,` + req.body.素早さ + `,"` + req.body.クラス + `","` + req.body.スタイル + `",` + req.body.覚醒ゲージ + `);
 `
 console.log(sql);
 db.serialize( () => {
@@ -106,7 +117,7 @@ console.log(req.body);
 app.get("/topM", (req, res) => {
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id,名前, HP, 攻撃力, 防御力, 素早さ, クラス, スタイル from megido order by 素早さ" + desc + " limit " + req.query.pop + ";";
+    let sql = "select id,名前, HP, 攻撃力, 防御力, 素早さ, クラス, スタイル, 覚醒ゲージ from megido order by 素早さ" + desc + " limit " + req.query.pop + ";";
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
@@ -118,9 +129,8 @@ app.get("/topM", (req, res) => {
 })
 
 app.get("/topQ", (req, res) => {
-    let sql = `
-search into QA (Q,A) values Q = ("` + req.body.Q + `");
-`
+    let sql = "select id,Q, A from QA WHERE Q =" + req.query.desc +";";
+
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
